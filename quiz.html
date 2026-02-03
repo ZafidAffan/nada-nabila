@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sedikit Pertanyaan</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+<div class="container">
+  <h1>Sedikit Pertanyaan</h1>
+  <p class="subtitle">Jawabnya santai aja, nggak ada benar atau salah.</p>
+
+  <div id="progress"></div>
+
+  <!-- Q1 -->
+  <div class="question" id="q1">
+    <h2>1. Apakah Anda lebih menyukai kegiatan nongkrong dalam waktu lama sambil berbincang, atau berpindah-pindah tempat saat beraktivitas di luar?</h2>
+    <button onclick="saveAnswer(1,'Nongkrong lama'); nextQuestion()">Nongkrong lama</button>
+    <button onclick="saveAnswer(1,'Pindah-pindah'); nextQuestion()">Pindah-pindah</button>
+  </div>
+
+  <!-- Q2 -->
+  <div class="question" id="q2">
+    <h2>2. Dalam hal kuliner khas Yogyakarta, apakah Anda lebih menyukai makanan bercita rasa manis atau gurih?</h2>
+    <button onclick="saveAnswer(2,'Manis'); nextQuestion()">Manis</button>
+    <button onclick="saveAnswer(2,'Gurih'); nextQuestion()">Gurih</button>
+  </div>
+
+  <!-- Q3 -->
+  <div class="question" id="q3">
+    <h2>3. Pada waktu kapan Anda lebih nyaman beraktivitas di luar di Yogyakarta?</h2>
+    <button onclick="saveAnswer(3,'Siang'); nextQuestion()">Siang</button>
+    <button onclick="saveAnswer(3,'Sore'); nextQuestion()">Sore</button>
+    <button onclick="saveAnswer(3,'Malam'); nextQuestion()">Malam</button>
+  </div>
+
+  <!-- Q4 -->
+  <div class="question" id="q4">
+    <h2>4. Apakah Anda lebih menyukai tempat berkumpul yang ramai dan dinamis, atau tempat yang tenang dengan suasana estetik?</h2>
+    <button onclick="saveAnswer(4,'Ramai & dinamis'); nextQuestion()">Ramai & dinamis</button>
+    <button onclick="saveAnswer(4,'Tenang & estetik'); nextQuestion()">Tenang & estetik</button>
+  </div>
+
+  <!-- Q5 -->
+  <div class="question" id="q5">
+    <h2>5. Menurut Anda, makanan khas Yogyakarta yang tergolong populer namun terasa berlebihan dari segi popularitas (overrated) adalah apa?</h2>
+    <textarea placeholder="Jawaban Anda..." oninput="saveAnswer(5,this.value)"></textarea>
+    <button class="next" onclick="nextQuestion()">Lanjut</button>
+  </div>
+
+  <!-- Q6 -->
+  <div class="question" id="q6">
+    <h2>6. Bagi anda, faktor apa yang lebih menentukan kenyamanan suatu tempat nongkrong?</h2>
+    <button onclick="saveAnswer(6,'Kualitas makanan'); nextQuestion()">Kualitas makanan</button>
+    <button onclick="saveAnswer(6,'Suasana tempat'); nextQuestion()">Suasana tempat</button>
+  </div>
+
+  <!-- Q7 -->
+  <div class="question" id="q7">
+    <h2>7. Apakah Anda menyukai aktivitas rekreasi di alam terbuka?</h2>
+    <button onclick="saveAnswer(7,'Ya'); nextQuestion()">Ya</button>
+    <button onclick="saveAnswer(7,'Tidak'); nextQuestion()">Tidak</button>
+  </div>
+
+   <!-- Q8 -->
+  <div class="question" id="q8">
+    <h2>
+      8. Apakah Anda memiliki tempat bermain atau nongkrong di Yogyakarta
+      yang ingin dikunjungi, namun hingga saat ini belum terealisasi?
+    </h2>
+
+    <button onclick="saveAnswer(8,'Ya'); nextQuestion()">Ya</button>
+    <button onclick="saveAnswer(8,'Tidak'); nextQuestion()">Tidak</button>
+  </div>
+
+
+  <!-- Q9 -->
+  <div class="question" id="q9">
+    <h2>9. Kuliner Yogyakarta apa yang paling sering Anda nikmati?</h2>
+    <textarea placeholder="Jawaban Anda..." oninput="saveAnswer(9,this.value)"></textarea>
+    <button class="next" onclick="nextQuestion()">Lanjut</button>
+  </div>
+
+  <!-- Q10 -->
+  <div class="question" id="q10">
+    <h2>10. Apakah Anda lebih senang menonton film di bioskop atau melalui platform streaming?</h2>
+    <button onclick="saveAnswer(10,'Bioskop'); nextQuestion()">Bioskop</button>
+    <button onclick="saveAnswer(10,'Streaming'); nextQuestion()">Streaming</button>
+  </div>
+
+  <!-- Q11 -->
+  <div class="question" id="q11">
+    <h2>11. Genre film apa yang paling Anda sukai?</h2>
+
+    <button onclick="saveAnswer(11,'Drama'); nextQuestion()">Drama</button>
+    <button onclick="saveAnswer(11,'Komedi'); nextQuestion()">Komedi</button>
+    <button onclick="saveAnswer(11,'Action'); nextQuestion()">Action</button>
+    <button onclick="saveAnswer(11,'Romantis'); nextQuestion()">Romantis</button>
+  </div>
+
+  <!-- Q12 -->
+  <div class="question" id="q12">
+    <h2>12. Anda lebih nyaman menonton film?</h2>
+    <button onclick="saveAnswer(12,'Sendiri'); nextQuestion()">Sendiri</button>
+    <button onclick="saveAnswer(12,'Bersama orang lain'); nextQuestion()">Bersama orang lain</button>
+  </div>
+
+  <!-- Q13 -->
+  <div class="question" id="q13">
+    <h2>13. Anda tim DC atau Marvel?</h2>
+    <button onclick="saveAnswer(13,'DC'); nextQuestion()">DC</button>
+    <button onclick="saveAnswer(13,'Marvel'); nextQuestion()">Marvel</button>
+  </div>
+
+  <!-- Q14 -->
+  <div class="question" id="q14">
+    <h2>14. Apakah Anda memiliki karakter favorit di Marvel Cinematic Universe?</h2>
+    <textarea placeholder="Sebutkan karakter..." oninput="saveAnswer(14,this.value)"></textarea>
+    <button class="next" onclick="nextQuestion()">Lanjut</button>
+  </div>
+
+  <!-- Q15 -->
+  <div class="question" id="q15">
+    <h2>15. Seberapa tertarik Anda terhadap Marvel Cinematic Universe (MCU)?</h2>
+    <button onclick="saveAnswer(15,'Sangat tidak tertarik')">😐</button>
+    <button onclick="saveAnswer(15,'Netral')">🙂</button>
+    <button onclick="saveAnswer(15,'Sangat tertarik')">😍</button>
+    <button class="submit" onclick="submitQuiz()">Kirim Jawaban</button>
+  </div>
+
+</div>
+
+</body>
+</html>

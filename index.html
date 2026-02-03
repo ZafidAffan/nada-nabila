@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sedikit Pertanyaan</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+
+  <style>
+    /* loading sederhana */
+    #loading {
+      display: none;
+      margin-top: 20px;
+      text-align: center;
+      font-size: 16px;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Sedikit Pertanyaan</h1>
+  <p class="subtitle">Jawabnya santai aja, nggak ada benar atau salah.</p>
+
+  <div id="progress"></div>
+
+  <!-- Q1 -->
+  <div class="question" id="q1">
+    <h2>1. Apakah Anda lebih menyukai kegiatan nongkrong lama atau berpindah-pindah?</h2>
+    <button onclick="saveAnswer(1,'Nongkrong lama'); nextQuestion()">Nongkrong lama</button>
+    <button onclick="saveAnswer(1,'Pindah-pindah'); nextQuestion()">Pindah-pindah</button>
+  </div>
+
+  <!-- Q2 -->
+  <div class="question" id="q2">
+    <h2>2. Lebih suka makanan Jogja yang manis atau gurih?</h2>
+    <button onclick="saveAnswer(2,'Manis'); nextQuestion()">Manis</button>
+    <button onclick="saveAnswer(2,'Gurih'); nextQuestion()">Gurih</button>
+  </div>
+
+  <!-- Q3 -->
+  <div class="question" id="q3">
+    <h2>3. Lebih nyaman keluar rumah di waktu?</h2>
+    <button onclick="saveAnswer(3,'Siang'); nextQuestion()">Siang</button>
+    <button onclick="saveAnswer(3,'Sore'); nextQuestion()">Sore</button>
+    <button onclick="saveAnswer(3,'Malam'); nextQuestion()">Malam</button>
+  </div>
+
+  <!-- Q4 -->
+  <div class="question" id="q4">
+    <h2>4. Pilih tempat nongkrong?</h2>
+    <button onclick="saveAnswer(4,'Ramai'); nextQuestion()">Ramai</button>
+    <button onclick="saveAnswer(4,'Tenang'); nextQuestion()">Tenang</button>
+  </div>
+
+  <!-- Q5 -->
+  <div class="question" id="q5">
+    <h2>5. Kuliner Jogja yang menurutmu overrated?</h2>
+    <textarea placeholder="Jawaban Anda..." oninput="saveAnswer(5,this.value)"></textarea>
+    <button onclick="nextQuestion()">Lanjut</button>
+  </div>
+
+  <!-- Q6 -->
+  <div class="question" id="q6">
+    <h2>6. Nongkrong lebih penting?</h2>
+    <button onclick="saveAnswer(6,'Makanan'); nextQuestion()">Makanan</button>
+    <button onclick="saveAnswer(6,'Suasana'); nextQuestion()">Suasana</button>
+  </div>
+
+  <!-- Q7 -->
+  <div class="question" id="q7">
+    <h2>7. Suka healing ke alam?</h2>
+    <button onclick="saveAnswer(7,'Ya'); nextQuestion()">Ya</button>
+    <button onclick="saveAnswer(7,'Tidak'); nextQuestion()">Tidak</button>
+  </div>
+
+  <!-- Q8 -->
+  <div class="question" id="q8">
+    <h2>8. Ada wishlist tempat di Jogja?</h2>
+    <button onclick="saveAnswer(8,'Ya'); nextQuestion()">Ya</button>
+    <button onclick="saveAnswer(8,'Tidak'); nextQuestion()">Tidak</button>
+  </div>
+
+  <!-- Q9 -->
+  <div class="question" id="q9">
+    <h2>9. Kuliner Jogja favoritmu?</h2>
+    <textarea placeholder="Jawaban Anda..." oninput="saveAnswer(9,this.value)"></textarea>
+    <button onclick="nextQuestion()">Lanjut</button>
+  </div>
+
+  <!-- Q10 -->
+  <div class="question" id="q10">
+    <h2>10. Nonton film lebih suka?</h2>
+    <button onclick="saveAnswer(10,'Bioskop'); nextQuestion()">Bioskop</button>
+    <button onclick="saveAnswer(10,'Streaming'); nextQuestion()">Streaming</button>
+  </div>
+
+  <!-- Q11 -->
+  <div class="question" id="q11">
+    <h2>11. Genre favorit?</h2>
+    <button onclick="saveAnswer(11,'Drama'); nextQuestion()">Drama</button>
+    <button onclick="saveAnswer(11,'Komedi'); nextQuestion()">Komedi</button>
+    <button onclick="saveAnswer(11,'Action'); nextQuestion()">Action</button>
+    <button onclick="saveAnswer(11,'Romantis'); nextQuestion()">Romantis</button>
+  </div>
+
+  <!-- Q12 -->
+  <div class="question" id="q12">
+    <h2>12. Lebih nyaman nonton?</h2>
+    <button onclick="saveAnswer(12,'Sendiri'); nextQuestion()">Sendiri</button>
+    <button onclick="saveAnswer(12,'Bareng'); nextQuestion()">Bareng</button>
+  </div>
+
+  <!-- Q13 -->
+  <div class="question" id="q13">
+    <h2>13. Tim DC atau Marvel?</h2>
+    <button onclick="saveAnswer(13,'DC'); nextQuestion()">DC</button>
+    <button onclick="saveAnswer(13,'Marvel'); nextQuestion()">Marvel</button>
+  </div>
+
+  <!-- Q14 -->
+  <div class="question" id="q14">
+    <h2>14. Karakter MCU favorit?</h2>
+    <textarea placeholder="Nama karakter..." oninput="saveAnswer(14,this.value)"></textarea>
+    <button onclick="nextQuestion()">Lanjut</button>
+  </div>
+
+  <!-- Q15 -->
+  <div class="question" id="q15">
+    <h2>15. Seberapa tertarik dengan MCU?</h2>
+    <button onclick="saveAnswer(15,'Tidak tertarik')">😐</button>
+    <button onclick="saveAnswer(15,'Netral')">🙂</button>
+    <button onclick="saveAnswer(15,'Sangat tertarik')">😍</button>
+
+    <button class="submit" onclick="showLoading(); submitQuiz()">
+      Kirim Jawaban
+    </button>
+
+    <!-- LOADING -->
+    <div id="loading">⏳ Mengirim jawaban...</div>
+  </div>
+
+</div>
+
+<script>
+  function showLoading() {
+    document.getElementById("loading").style.display = "block";
+  }
+</script>
+
+</body>
+</html>

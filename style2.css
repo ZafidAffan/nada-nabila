@@ -1,0 +1,595 @@
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC');
+
+body {
+	font-family: 'Indie Flower', cursive !important;
+  background: #FDE3A7; /*CAPE HONEY*/
+	margin: 0px;
+	padding: 0px;
+}
+
+::selection {
+	background: transparent;
+}
+
+h4 {
+	font-size: 26px;
+	line-height: 1px;
+	font-family: 'Amatic SC', cursive !important;
+}
+
+.color1{color:#1BBC9B}/*MOUNTAIN MEADOW*/
+.color2{color:#C0392B/*TALL POPPY*/}
+
+
+.card {
+	color: #013243; /*SHERPA BLUE*/
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 300px;
+	height: 400px;
+	background: #e0e1dc;
+	transform-style: preserve-3d;
+	transform: translate(-50%,-50%) perspective(2000px);
+	box-shadow: inset 300px 0 50px rgba(0,0,0,.5), 20px 0 60px rgba(0,0,0,.5);
+	transition: 1s;
+}
+
+.card:hover {
+	transform: translate(-50%,-50%) perspective(2000px) rotate(15deg) scale(1.2);
+	box-shadow: inset 20px 0 50px rgba(0,0,0,.5), 0 10px 100px rgba(0,0,0,.5);
+}
+
+.card:before {
+	content:'';
+	position: absolute;
+	top: -5px;
+	left: 0;
+	width: 100%;
+	height: 5px;
+	background: #BAC1BA;
+	transform-origin: bottom;
+	transform: skewX(-45deg);
+}
+
+.card:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: -5px;
+	width: 5px;
+	height: 100%;
+	background: #92A29C;
+	transform-origin: left;
+	transform: skewY(-45deg);
+}
+
+.card .imgBox {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	transform-origin: left;
+	transition: .7s;
+}
+
+.card .bark {
+	position: absolute;
+	background: #e0e1dc;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	transition: .7s;
+}
+
+.card .imgBox img {
+
+    width: 100%;
+    height: 100%;
+    object-fit: cover;      /* ini kuncinya */
+    display: block;
+}
+
+.card:hover .imgBox {
+	transform: rotateY(-135deg);
+}
+
+.card:hover .bark {
+	opacity: 1;
+	transition: .6s;
+  box-shadow: 300px 200px 100px rgba(0, 0, 0, .4) inset;
+}
+
+.card .details {
+	position: absolute;
+	top: 0;
+	left: 0;
+	box-sizing: border-box;
+	padding: 0 0 0 10px;
+	z-index: -1;
+	margin-top: 70px;
+}
+
+.card .details p {
+	font-size: 15px;
+	line-height: 5px;
+	transform: rotate(-10deg);
+	padding: 0 0 0 20px;
+}
+
+.card .details h4 {
+	text-align: center;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.card .button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#surpriseButton {
+    background-color: #f78fb3;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Amatic SC', cursive;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+#surpriseButton:hover {
+    background-color: #f06595;
+    transform: scale(1.05);
+}
+
+.story,
+.gallery {
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+}
+.story span,
+.gallery span {
+    text-transform:uppercase;
+    color: #666;
+    font-size: 0,9rem;
+    display: block;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+
+.story p,
+.gallery p{
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+.timeline{
+    list-style: none;
+    padding: 1,4rem 0;
+    margin-top: 1rem;
+    position: relative;
+    
+    /* dari gpt, tadinya nambahnya ke samping, jadi nya kebawah */
+    display: flex;
+    flex-direction: column; /* Menyusun item secara vertikal */
+
+}
+
+/* supaya garis nya ngikutin terus foto nya (nambah panjang) */
+.timeline::before{
+	content: ''; /* Harus ada untuk membuat garis */
+	display: block; /* Mengubah display dari inline untuk garis vertikal */
+	position: absolute;
+	right: auto; /* Menghapus pengaturan 'right' agar tidak mempengaruhi posisi */
+	top: 50px; /* Atur jarak dari atas */
+	bottom: 100px; /* Atur jarak dari bawah */
+	width: 1px; /* Lebar garis vertikal */
+	background-color: #666; /* Warna garis */
+	left: 50%;
+}
+
+.timeline li{
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+.timeline li ::before,
+.timeline li ::after{
+    content: '';
+    display: table; 
+}
+
+.timeline li::after{
+    clear: both;
+}
+
+.timeline li .timeline-image{
+    width: 160px;
+    height: 160px;
+    background-color: #ccc;
+    position: absolute;
+    left: 49%;
+    border-radius: 50%;
+    transform: translateX(-50%); /*udah di dorong ke kanan, ditarik lagi ke kiri jadiny pas di tengah*/
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.timeline li .timeline-panel{  /*kotak tulisan*/
+    width: 40%; /*lebar ul*/
+    float: left; /* supaya check point genap di kiri*/
+    border: 1px solid #ccc;
+    padding: 2rem;
+    position: relative;
+    border-radius: 5px;
+
+}
+
+.timeline li   .timeline-panel::before{
+    content: '';
+    display: inline-block;
+    position: absolute;
+
+    /*buat segitiga*/
+    border-top: 15px solid transparent;
+    border-left: 15px solid #f4f4f9;
+    border-right: 0 solid #f4f4f9;
+    border-bottom: 15px solid transparent;
+
+    /*buat ke kanan  kotak*/
+    top: 80px;
+    right: -15px;
+    
+}
+
+    /* buat segitiga lebih kecil untuk nimpa segitiga sebelumnya*/
+.timeline li   .timeline-panel::after{
+    content: '';
+    display: inline-block;
+    position: absolute;
+
+    /*buat segitiga penimpanya*/
+    border-top: 14px solid transparent;
+    border-left: 14px solid #f78fb3;
+    border-right: 0 solid #f78fb3;
+    border-bottom: 14px solid transparent;
+
+    /*di mundurin supaya border nya keliatan*/
+    top: 81px;
+    right: -13px;
+}
+
+.book-title {
+    position: absolute;
+    top: -120px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Amatic SC', cursive;
+    font-size: 36px;
+    color: #013243;
+    letter-spacing: 2px;
+    animation: floating 2s ease-in-out infinite;
+    pointer-events: none;
+}
+
+/* animasi halus naik-turun */
+@keyframes floating {
+    0%   { transform: translateX(-50%) translateY(0); }
+    50%  { transform: translateX(-50%) translateY(-6px); }
+    100% { transform: translateX(-50%) translateY(0); }
+}
+
+
+ /*supaya check point yang genap di kanan*/
+ .timeline li.timeline-inverted .timeline-panel{  /*ambil ul yang nama kelas nya timeline, lalu li yang kelasnya timline-inverted, lalu timline-panel di dalamnya: */
+    float: right;
+}
+
+ .timeline li.timeline-inverted .timeline-panel::before{  /*ambil ul yang nama kelas nya timeline, lalu li yang kelasnya timline-inverted, lalu timline-panel di dalamnya: */
+    /*buat segitiga kebalikan dari yg atas*/
+    border-left-width:0 ;
+    border-right-width:15px ;
+    left: -15px;
+    right: auto;
+
+}
+ .timeline li.timeline-inverted .timeline-panel::after{  /*ambil ul yang nama kelas nya timeline, lalu li yang kelasnya timline-inverted, lalu timline-panel di dalamnya: */
+    /*buat segitiga penimpa kebalikan dari yg atas*/
+    border-left-width:0 ;
+    border-right-width:15px ;
+    left: -13px;
+    right: auto;
+}
+
+
+
+/*---------------------------------------------------------------------------------------- TTS ------------------------------------------*/
+.tts body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.tts .container {
+    text-align: center;
+}
+
+.tts h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.crossword table {
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+.crossword td {
+    border: 1px solid #333;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+}
+
+.crossword input {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: 18px;
+    border: none;
+    outline: none;
+}
+
+.tts button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #f78fb3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+	font-family: 'Amatic SC', cursive;
+}
+
+#message {
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+/*----- label tts nya -------*/
+/* Gaya untuk input-wrapper */
+.input-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+}
+
+/* Gaya untuk input */
+.input-wrapper input {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Gaya untuk label */
+.input-wrapper label {
+    position: absolute;
+    top: -10px; /* Atur posisi label di atas input */
+    left: 5px;
+    font-size: 12px;
+    color: gray;
+}
+
+
+/* -------------------------------------    ini biar lebih fleksibel ketika di buka di hp (responsive) ----------------------------------------------------------------
+
+/* laptop*/
+@media (max-width: 992px){
+    html{
+        font-size: 75%;
+    }
+
+    .timeline ::before{
+        left: 60px;
+    }
+
+    .timeline li .timeline-image{
+        width: 130px;
+        height: 130px;
+
+        left: 15px;
+        margin-left: 45px;
+        top: 16px;
+    }
+
+    .timeline li .timeline-panel{
+        width: calc(100%-200px); /*lebar ul, supaya bisa ngikutin lebarnya*/
+        transform: translateX(-20px);
+        float: right; /*supaya semuanya ke kanan*/
+    }
+
+    .timeline li .timeline-panel::before{
+        /*buat segitiga*/
+        border-left-width: 0;
+        border-right-width: 15px;
+        left: -15px;
+        right: auto;  
+        
+        margin-top: -30px;
+    }
+
+    .timeline li .timeline-panel::after{
+        /*buat segitiga*/
+        border-left-width: 0;
+        border-right-width: 14px;
+        left: -13px;
+        right: auto;   
+
+        margin-top: -30px;
+    }
+}
+/*tablet*/
+@media (max-width: 760px){
+    html{
+        font-size: 62.5%;
+    }
+    /* Memposisikan garis di kiri */
+    .timeline::before {
+        left: 15px; /* Menempatkan garis di sebelah kiri */
+        right: auto; /* Menghapus pengaturan 'right' agar tidak mempengaruhi posisi */
+    }
+
+    .timeline li .timeline-image {
+        width: 80px;
+        height: 80px;
+    }
+
+    .timeline li .timeline-panel {
+        width: 65%; /*calc(100%-200px);lebar ul, tadinya pake calc, supaya bisa ngikutin lebarnya*/
+        transform: translateX(0px);
+        float: right; /*supaya semuanya ke kanan*/
+    }
+
+    .timeline li.timeline-inverted .timeline-panel {
+        width: 65%; /* Lebar panel untuk item yang diinverted */
+        transform: translateX(0); /* Menghapus transformasi horizontal */
+    }
+
+    .timeline li .timeline-panel::before{
+        /*buat segitiga*/
+        border-left-width: 0;
+        border-right-width: 15px;
+        left: -15px;
+        right: auto;   
+    }
+
+    .timeline li .timeline-panel::after{
+        /*buat segitiga*/
+        border-left-width: 0;
+        border-right-width: 14px;
+        left: -13px;
+        right: auto;   
+    }
+
+
+
+    .timeline li.timeline-inverted .timeline-panel::before {
+        /*buat segitiga*/
+        border-left-width: 0;
+        border-right-width: 15px;
+        left: -15px;
+        right: auto;   
+    }
+
+    .timeline li.timeline-inverted .timeline-panel::after {
+        /*buat segitiga*/
+        border-left-width: 0;
+        border-right-width: 14px;
+        left: -13px;
+        right: auto;  
+    }
+
+
+}
+
+/*mobile phone*/
+@media (max-width: 576px) {
+    html {
+        font-size: 75%;
+    }
+
+  
+
+    /* Memposisikan garis di kiri */
+    .timeline::before {
+        content: ''; /* Harus ada untuk membuat garis */
+        display: block; /* Mengubah display dari inline untuk garis vertikal */
+        position: absolute;
+        left: 83px; /* Menempatkan garis di sebelah kiri */
+        right: auto; /* Menghapus pengaturan 'right' agar tidak mempengaruhi posisi */
+        top: 50px; /* Atur jarak dari atas */
+        bottom: 100px; /* Atur jarak dari bawah */
+        width: 1px; /* Lebar garis vertikal */
+        background-color: #666; /* Warna garis */
+    
+    }
+
+    .timeline li .timeline-image {
+        width: 80px;
+        height: 80px;
+    }
+
+    .timeline li .timeline-panel {
+        width: 65%; /* Lebar panel di perangkat mobile */
+        transform: translateX(0); /* Menghapus transformasi horizontal */
+    }
+
+    .timeline li .timeline-panel::before{
+        
+        /*buat segitiga kebalikan dari yg atas*/
+        border-left-width:0 ;
+        border-right-width:15px ;
+        left: -15px;
+        right: auto;  
+    }
+
+    .timeline li .timeline-panel::after{
+        
+        /*buat segitiga kebalikan dari yg atas*/
+        border-left-width:0 ;
+        border-right-width:14px ;
+        left: -13px;
+        right: auto;  
+    }
+
+
+    .timeline li.timeline-inverted .timeline-panel {
+        width: 65%; /* Lebar panel untuk item yang diinverted */
+        transform: translateX(0); /* Menghapus transformasi horizontal */
+    }
+
+    .timeline li.timeline-inverted .timeline-panel::before {
+        /* Segitiga penunjuk di sisi kanan panel yang diinverted */
+        /*buat segitiga kebalikan dari yg atas*/
+        border-left-width:0 ;
+        border-right-width:15px ;
+        left: -15px;
+        right: auto;  
+    }
+
+    .timeline li.timeline-inverted .timeline-panel::after {
+        /* Segitiga penunjuk di sisi kanan panel yang diinverted */
+        /*buat segitiga kebalikan dari yg atas*/
+        border-left-width:0 ;
+        border-right-width:14px ;
+        left: -13px;
+        right: auto;  
+    }
+}
+
+
+/* Ukuran extra */
+@media (max-width:1200px){
+    .home .heart {
+        transform: translateX(-50%) translateY(100px)
+    }
+}

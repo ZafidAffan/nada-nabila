@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #FFDDAB, #FF9A9A);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  background: #ffffff;
+  width: 90%;
+  max-width: 520px;
+  padding: 28px 26px 34px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  animation: fadeUp 0.6s ease;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h1 {
+  margin: 0;
+  text-align: center;
+  color: #5F8B4C;
+  font-weight: 600;
+}
+
+.subtitle {
+  text-align: center;
+  color: #945034;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+#progress {
+  text-align: center;
+  font-size: 13px;
+  color: #5F8B4C;
+  margin-bottom: 18px;
+  font-weight: 500;
+}
+
+.question {
+  display: none;
+  animation: fadeUp 0.4s ease;
+}
+
+.question h2 {
+  font-size: 16px;
+  color: #945034;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+/* BUTTON */
+button {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 14px;
+  border: none;
+  background: #5F8B4C;
+  color: #ffffff;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+button:hover {
+  background: #5F8B4C;
+  transform: translateY(-2px);
+}
+
+/* NEXT / SUBMIT */
+button.next,
+button.submit {
+  background: #5F8B4C;
+  margin-top: 8px;
+}
+
+button.next:hover,
+button.submit:hover {
+  background: #945034;
+}
+
+/* TEXTAREA */
+textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: 12px;
+  border-radius: 14px;
+  border: 2px solid #FFDDAB;
+  font-size: 14px;
+  resize: none;
+  margin-bottom: 12px;
+  transition: border 0.25s;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: #5F8B4C;
+}
+
+
+/* =========================
+   Q15 – Hover Effect Emoji
+========================= */
+
+#q15 button {
+  font-size: 28px;
+  padding: 14px 18px;
+  margin: 8px;
+  border-radius: 16px;
+  border: none;
+  cursor: pointer;
+  background-color: #FFDDAB;
+  transition: all 0.25s ease;
+}
+
+/* Hover */
+#q15 button:hover {
+  transform: scale(1.15);
+  background-color: #FF9A9A;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* Klik (active) */
+#q15 button:active {
+  transform: scale(1.05);
+}
+
+/* Tombol kirim beda sendiri */
+#q15 .submit {
+  font-size: 16px;
+  background-color: #5F8B4C;
+  color: white;
+}
+
+#q15 .submit:hover {
+  background-color: #945034;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #ccc;
+  border-top: 2px solid #333;
+  border-radius: 50%;
+  display: inline-block;
+  animation: spin 1s linear infinite;
+  margin-right: 6px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
